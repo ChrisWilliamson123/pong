@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var playerOneY;
-    var ballSpeed = 5;
-    var ballAngle = 90;
+    var ballSpeed = 1;
+    var ballDirection = 1;
     var ballMovementInterval;
 
     var distanceBetween = $('#p-two').offset().left - ($('#p-one').offset().left+15)
@@ -21,7 +21,17 @@ $(document).ready(function() {
     function startBallMovement() {
         var currentLeft = $('#ball').offset().left;
         ballMovementInterval = setInterval(function() {
-            var newLeft = currentLeft + distanceBetween/(60*ballSpeed);
+            if (currentLeft > ($('#p-two').offset().left - 15) && ballDirection == 1) {
+                ballDirection *= -1;
+                var newLeft = currentLeft - distanceBetween/(60*ballSpeed);
+            }
+            else if (currentLeft < ($('#p-one').offset().left + 15) && ballDirection == -1) {
+                ballDirection *= -1;
+                var newLeft = currentLeft + distanceBetween/(60*ballSpeed);
+            }
+            else {
+                var newLeft = currentLeft + (distanceBetween/(60*ballSpeed) * ballDirection);
+            }
             $('#ball').css('left', newLeft);
             currentLeft = newLeft;
         }, 1000/60);
