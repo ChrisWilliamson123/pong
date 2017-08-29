@@ -1,0 +1,21 @@
+body {
+    #main {
+        background-color: black;
+        height: 100vh;
+
+        .player {
+            height: 40px;
+            width: 15px;
+            background-color: white;
+            position: absolute;
+
+            &.left {
+                left: 50px;
+            }
+
+            &.right {
+                right: 50px;
+            }
+        }
+    }
+}
