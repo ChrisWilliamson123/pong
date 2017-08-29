@@ -17,5 +17,14 @@ body {
                 right: 50px;
             }
         }
+
+        #ball {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+            left: 65px;
+            top: 15px;
+        }
     }
 }
